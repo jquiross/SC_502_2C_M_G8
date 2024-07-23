@@ -1,5 +1,7 @@
 CREATE DATABASE ElTapisDB;
 
+
+
 USE ElTapisDB;
 
 -- Tabla: Roles
@@ -61,14 +63,16 @@ CREATE TABLE Productos (
     nombre_producto VARCHAR(100) NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
+    descuento DECIMAL(10, 2) NOT NULL,
     categoria_id INT,
     proveedor_id INT,
     stock INT NOT NULL,
+    img_ruta VARCHAR(1000) NOT NULL,
     FOREIGN KEY (categoria_id) REFERENCES Categorías(categoria_id),
     FOREIGN KEY (proveedor_id) REFERENCES Proveedores(proveedor_id)
 );
 
---Tabla : carrito
+ -- Tabla:carrito
 CREATE TABLE carrito (
     id INT AUTO_INCREMENT PRIMARY KEY,
     producto_id INT,
