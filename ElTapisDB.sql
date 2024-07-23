@@ -68,6 +68,13 @@ CREATE TABLE Productos (
     FOREIGN KEY (proveedor_id) REFERENCES Proveedores(proveedor_id)
 );
 
+--Tabla : carrito
+CREATE TABLE carrito (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT,
+    cantidad INT,
+    FOREIGN KEY (producto_id) REFERENCES productos(producto_id)
+);
 -- Tabla: Pedidos
 CREATE TABLE Pedidos (
     pedido_id INT AUTO_INCREMENT PRIMARY KEY,
