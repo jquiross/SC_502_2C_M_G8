@@ -98,6 +98,37 @@
   transform: scale(1.05);
 }
 
+.whatsapp-button, .other-button {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.whatsapp-button {
+  bottom: 20px; /* Posición del primer botón */
+  right: 120px; /* Ajusta la separación desde el borde derecho */
+  background-color: #25d366;
+  color: #FFF;
+}
+
+.other-button {
+  bottom: 60px; /* 20px más abajo que el primer botón */
+  right: 40px; /* Ajusta la separación desde el borde derecho */
+  background-color: #ff5722; /* Cambia el color según el diseño del otro botón */
+  color: #FFF;
+}
+
+.whatsapp-button img, .other-button img {
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
