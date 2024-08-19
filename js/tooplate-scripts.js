@@ -90,7 +90,7 @@ function drawBarChart() {
     configBar = {
       type: "bar",
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Cacique", " Imperial", "Yellow", "Vodka Absolut", "Purple", "Orange"],
         datasets: [
           {
             label: "# of Hits",
@@ -124,7 +124,7 @@ function drawBarChart() {
 
 function drawPieChart() {
   if ($("#pieChart").length) {
-    ctxPie = document.getElementById("pieChart").getContext("2d");
+    ctxPie = document.getElementById("").getContext("2d");
     optionsPie = {
       responsive: true,
       maintainAspectRatio: false
@@ -137,13 +137,13 @@ function drawPieChart() {
           {
             data: [4600, 5400],
             backgroundColor: [
-              window.chartColors.purple,
-              window.chartColors.green
+              window.chartColors.green,
+              window.chartColors.red
             ],
             label: "Storage"
           }
         ],
-        labels: ["Used: 4,600 GB", "Available: 5,400 GB"]
+        labels: ["Completados: 8", "Pendientes: 3"]
       },
       options: optionsPie
     };
