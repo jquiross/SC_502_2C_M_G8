@@ -1,6 +1,6 @@
 <?php
 class Cart {
-    private $conexion;
+    public $conexion;
 
     // Constructor para establecer la conexión a la base de datos
     public function __construct($conexion) {

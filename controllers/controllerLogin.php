@@ -32,9 +32,9 @@ if (isset($_POST["btningresar"])) {
         if ($contraseña === $db_contraseña) {
             // Redirigir según el rol
             if ($rol == 'Administrador') {
-                header("Location: indexDashboard.html");
+                header("Location: indexDashboard.php");
             } else if ($rol == 'Proveedor') {
-                header("Location: indecDashboard.php");          
+                header("Location: indexDashboard.php");          
             } else if ($rol == 'Cliente') {
                 header("Location: index.php");
             }

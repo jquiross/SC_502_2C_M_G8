@@ -2,6 +2,7 @@
 
 include("./config/conexion.php");
 include("./controllers/controllerProductos.php");
+include("./controllers/controllerCarrito.php");
 $controllerProductos = new controllerProductos();
 $products = $controllerProductos->getProducts();
 
@@ -59,7 +60,7 @@ while ($row = $result->fetch_assoc()) {
                     </li>
                 </ul>
                 <form class="d-flex">
-                        <a href="carritopag.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">
+                    <a href="carritopag.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">
                         <i class="bi-cart-fill me-1" style="color: #2e2b27;"></i>
                         Carrito
                         <span class="badge text-white ms-1 rounded-pill" style="background-color: #2e2b27;">
@@ -112,7 +113,7 @@ while ($row = $result->fetch_assoc()) {
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <form action="./controllers/add_to_cart.php" method="POST">
+                                    <form action="controllerCarrito.php" method="POST"></form>
                                         <input type="hidden" name="producto_id" value="<?php echo htmlspecialchars($product['producto_id']); ?>" />
                                         <button class="btn btn-outline-dark mt-auto" type="submit">Añadir al Carrito</button>
                                     </form>
