@@ -9,7 +9,7 @@ if (isset($_POST["btningresar"])) {
     } else {
 
         $nombre_usuario = $_POST["nombre_usuario"];
-        $contraseña = $_POST["contraseña"];
+        $contraseña = md5($_POST["contraseña"]);
 
         // Consulta para obtener la contraseña y el rol del usuario
         $stmt = $conexion->prepare("SELECT contraseña, rol_id FROM Usuarios WHERE nombre_usuario = ?");
@@ -33,9 +33,12 @@ if (isset($_POST["btningresar"])) {
             // Redirigir según el rol
             if ($rol == 'Administrador') {
                 header("Location: indexDashboard.html");
+            } else if ($rol == 'Proveedor') {
+                header("Location: indecDashboard.php");          
             } else if ($rol == 'Cliente') {
-                header("Location: index.html");
+                header("Location: index.php");
             }
+            
             exit();
         } else {
             echo "<div class='alert alert-danger' role='alert'>Usuario o contraseña incorrectos</div>";
