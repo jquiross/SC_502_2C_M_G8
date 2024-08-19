@@ -1,23 +1,46 @@
 <?php
-//conexion a bd
-include("./config/conexion.php");
+include_once './models/ProductoModel.php';
+include_once './controllers/controllerProductos.php';
+include_once './config/conexion.php';
 
-//se crea una clase para que el manejo sea mas facil
-class controllerProductos {
-    //se hace la funcion de la consulta
-    public function getProducts() {
-        global $conexion;
-        $stmt = $conexion->prepare("SELECT producto_id, nombre_producto, descripcion, precio, descuento, img_ruta FROM Productos");
-        $stmt->execute();
-        $result = $stmt->get_result();
+// Asegúrate de que el modelo está siendo incluido correctamente
 
-        $products = [];
-        while ($row = $result->fetch_assoc()) {
-            $products[] = $row;
+class ProductController {
+    private $model;
+
+    public function __construct($conexion) {
+        $this->model = new ProductModel($conexion);
+    }
+
+    public function index() {
+        return $this->model->getProductsWithCategories(); // Obtener productos y categorías
+    }
+
+    // Mostrar un producto específico
+    public function view($id) {
+        $product = $this->model->getProductById($id);
+        include 'views/product_view.php'; // Incluye la vista para mostrar un producto
+    }
+
+    // Añadir un nuevo producto
+    public function add($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta) {
+        $this->model->addProduct($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta);
+        header("Location: products.php"); // Redirige a la lista de productos
+    }
+
+    // Actualizar un producto existente
+    public function update($id, $nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta) {
+        $this->model->updateProduct($id, $nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta);
+        header("Location: view.php?id=$id"); // Redirige a la vista del producto
+    }
+
+    // Eliminar un producto
+    public function deleteProduct($productId) {
+        if ($this->model->deleteProduct($productId)) {
+            header('Location: products.php'); // Redirige de nuevo a la lista de productos
+        } else {
+            echo "Error al eliminar el producto.";
         }
-
-        $stmt->close();
-        return $products;
     }
 }
 ?>

@@ -13,16 +13,23 @@
     <?php
     include_once("./config/conexion.php");
     include_once("./models/UserModel.php");
-    include_once("./controllers/controllerUser.php");
 
-    $usuarios = obtenerUsuarios($conexion);
+    // Manejar la adición si se recibe un formulario POST
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $rol_id = $_POST['rol_id'];
 
-    // Manejar la eliminación si se recibe un ID de usuario en la solicitud POST
-    if (isset($_POST['delete_id'])) {
         $userModel = new UserModel($conexion);
-        $userModel->eliminarUsuario($_POST['delete_id']);
-        header("Location: accounts.php"); // Redirigir para evitar el reenvío del formulario
-        exit();
+        $success = $userModel->agregarUsuario($nombre, $email, $password, $rol_id);
+
+        if ($success) {
+            header("Location: accounts.php"); // Redirigir después de agregar
+            exit();
+        } else {
+            $error = "No se pudo agregar el usuario.";
+        }
     }
     ?>
 </head>
@@ -63,47 +70,39 @@
             </nav>
         </div>
 
-        <!-- Mostrar Usuarios -->
+        <!-- Formulario de Adición de Usuario -->
         <div class="row tm-content-row tm-mt-big justify-content-center">
-            <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12">
+            <div class="col-7">
                 <div class="bg-white tm-block">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Cuentas</h2>
-                            <a href="add_userDash.php" class="btn btn-primary float-right">Añadir Cuentas</a>
+                            <h2 class="tm-block-title d-inline-block">Añadir Usuario</h2>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-striped tm-table-striped-even mt-3">
-                            <thead>
-                                <tr class="tm-bg-gray">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Rol ID</th>
-                                    <th scope="col">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($usuarios as $usuario): ?>
-                                    <tr>
-                                        <td><?= htmlspecialchars($usuario['usuario_id']) ?></td>
-                                        <td><?= htmlspecialchars($usuario['nombre_usuario']) ?></td>
-                                        <td><?= htmlspecialchars($usuario['email']) ?></td>
-                                        <td><?= htmlspecialchars($usuario['rol_id']) ?></td>
-                                        <td>
-                                            <form method="POST" style="display: inline;">
-                                                <input type="hidden" name="delete_id" value="<?= htmlspecialchars($usuario['usuario_id']) ?>">
-                                                <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
+                    <?php if (isset($error)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= htmlspecialchars($error) ?>
+                        </div>
+                    <?php endif; ?>
+                    <form method="POST" class="tm-signup-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input id="nombre" name="nombre" type="text" class="form-control validate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" class="form-control validate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input id="password" name="password" type="password" class="form-control validate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rol_id">Rol ID</label>
+                            <input id="rol_id" name="rol_id" type="number" class="form-control validate" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Añadir Usuario</button>
+                    </form>
                 </div>
             </div>
         </div>

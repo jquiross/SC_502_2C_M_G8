@@ -3,9 +3,14 @@
 include("./config/conexion.php");
 include("./controllers/controllerProductos.php");
 include("./controllers/controllerCarrito.php");
-$controllerProductos = new controllerProductos();
-$products = $controllerProductos->getProducts();
 
+// Crea una instancia del controlador de productos
+$controller = new ProductController($conexion);
+
+// Obtén los productos
+$products = $controller->index(); // Usa el método correcto del controlador
+
+// Obtén los elementos del carrito
 $sql = "
     SELECT p.nombre_producto, p.precio, c.cantidad, (p.precio * c.cantidad) AS total
     FROM carrito c
@@ -19,7 +24,6 @@ while ($row = $result->fetch_assoc()) {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +77,6 @@ while ($row = $result->fetch_assoc()) {
                         </a>
                 </form>
 
-
             </div>
         </div>
     </nav>
@@ -113,7 +116,7 @@ while ($row = $result->fetch_assoc()) {
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <form action="controllerCarrito.php" method="POST"></form>
+                                    <form action="controllerCarrito.php" method="POST">
                                         <input type="hidden" name="producto_id" value="<?php echo htmlspecialchars($product['producto_id']); ?>" />
                                         <button class="btn btn-outline-dark mt-auto" type="submit">Añadir al Carrito</button>
                                     </form>
