@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("./config/conexion.php");
 include("./controllers/controllerProductos.php");
 
 $controllerProductos = new controllerProductos();
