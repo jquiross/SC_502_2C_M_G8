@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Page - Dashboard Admin Template</title>
+    <title>Register Page - Dashboard Admin Template</title>
     <!--
 
     Template 2108 Dashboard
@@ -29,11 +29,11 @@
                 <div class="bg-white tm-block">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <i class="fas fa-3x fa-tachometer-alt tm-site-icon text-center"></i>
-                            <h2 class="tm-block-title mt-3">Iniciar Sesión</h2>
+                            <i class="fas fa-3x fa-user-plus tm-site-icon text-center"></i>
+                            <h2 class="tm-block-title mt-3">Registrar Usuario</h2>
                             <?php
                             include("./config/conexion.php");
-                            include("./controllers/controllerLogin.php");
+                            include("./controllers/controllerRegister.php");
                             ?>
                         </div>
                     </div>
@@ -42,14 +42,18 @@
                             <form action="" method="post" class="tm-login-form">
                                 <div class="input-group">
                                     <label for="nombre_usuario" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Usuario</label>
-                                    <input name="nombre_usuario" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="nombre_usuario" >
+                                    <input name="nombre_usuario" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="nombre_usuario">
+                                </div>
+                                <div class="input-group mt-3">
+                                    <label for="email" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Email</label>
+                                    <input name="email" type="email" class="form-control validate" id="email">
                                 </div>
                                 <div class="input-group mt-3">
                                     <label for="contraseña" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Contraseña</label>
                                     <input name="contraseña" type="password" class="form-control validate" id="contraseña">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <button name ="btningresar" type="submit" class="btn btn-primary d-inline-block mx-auto">Iniciar Sesión</button>
+                                    <button name="btnregistrar" type="submit" class="btn btn-primary d-inline-block mx-auto">Registrar</button>
                                 </div>
                             </form>
                         </div>
