@@ -7,7 +7,7 @@ class controllerProductos {
     //se hace la funcion de la consulta
     public function getProducts() {
         global $conexion;
-        $stmt = $conexion->prepare("SELECT nombre_producto, descripcion, precio, descuento, img_ruta FROM Productos");
+        $stmt = $conexion->prepare("SELECT producto_id, nombre_producto, descripcion, precio, descuento, img_ruta FROM Productos");
         $stmt->execute();
         $result = $stmt->get_result();
 
