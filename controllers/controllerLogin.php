@@ -9,32 +9,44 @@ if (isset($_POST["btningresar"])) {
     } else {
 
         $nombre_usuario = $_POST["nombre_usuario"];
-        $contraseña = $_POST["contraseña"];
+        $contraseña = md5($_POST["contraseña"]);
 
         // Consulta para obtener la contraseña y el rol del usuario
-        $stmt = $conexion->prepare("SELECT contraseña, rol FROM Usuarios WHERE nombre_usuario = ?");
+        $stmt = $conexion->prepare("SELECT contraseña, rol_id FROM Usuarios WHERE nombre_usuario = ?");
         $stmt->bind_param("s", $nombre_usuario);
         $stmt->execute();
-        $stmt->bind_result($db_contraseña, $rol);
+        $stmt->bind_result($db_contraseña, $rol_id);
         $stmt->fetch();
+        $stmt->close();
+
+        $stmt2 = $conexion->prepare("SELECT nombre_rol FROM roles WHERE rol_id = ?");
+        $stmt2->bind_param("s", $rol_id);
+        $stmt2->execute();
+        $stmt2->bind_result($rol);
+        $stmt2->fetch();
+
+        $conexion->close();
+        
 
         // Verificar si la contraseña ingresada coincide con la almacenada
         if ($contraseña === $db_contraseña) {
             // Redirigir según el rol
-            if ($rol == 'proveedor') {
-                header("Location: indexDashboard.html");
-            } else if ($rol == 'cliente') {
-                header("Location: index.html");
+            if ($rol == 'Administrador') {
+                header("Location: indexDashboard.php");
+            } else if ($rol == 'Proveedor') {
+                header("Location: indexDashboard.php");          
+            } else if ($rol == 'Cliente') {
+                header("Location: index.php");
             }
+            
             exit();
         } else {
             echo "<div class='alert alert-danger' role='alert'>Usuario o contraseña incorrectos</div>";
         }
-
-        $stmt->close();
+        $stmt2->close();
     }
 }
 
-$conexion->close();
+
 
 ?>

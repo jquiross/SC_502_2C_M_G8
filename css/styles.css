@@ -91,6 +91,44 @@
   }
 }
 
+.card {
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+.whatsapp-button, .other-button {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.whatsapp-button {
+  bottom: 20px; /* Posición del primer botón */
+  right: 120px; /* Ajusta la separación desde el borde derecho */
+  background-color: #25d366;
+  color: #FFF;
+}
+
+.other-button {
+  bottom: 60px; /* 20px más abajo que el primer botón */
+  right: 40px; /* Ajusta la separación desde el borde derecho */
+  background-color: #ff5722; /* Cambia el color según el diseño del otro botón */
+  color: #FFF;
+}
+
+.whatsapp-button img, .other-button img {
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -3605,6 +3643,7 @@ textarea.form-control-lg {
 }
 
 .nav {
+    color: #706955;
   --bs-nav-link-padding-x: 1rem;
   --bs-nav-link-padding-y: 0.5rem;
   --bs-nav-link-font-weight: ;
@@ -3726,6 +3765,7 @@ textarea.form-control-lg {
 }
 
 .navbar {
+    background-color: #9B8B5C;
   --bs-navbar-padding-x: 0;
   --bs-navbar-padding-y: 0.5rem;
   --bs-navbar-color: rgba(0, 0, 0, 0.55);
@@ -3734,7 +3774,7 @@ textarea.form-control-lg {
   --bs-navbar-active-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-brand-padding-y: 0.3125rem;
   --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.25rem;
+  --bs-navbar-brand-font-size: 1.7rem;
   --bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
   --bs-navbar-nav-link-padding-x: 0.5rem;
@@ -3782,7 +3822,7 @@ textarea.form-control-lg {
   --bs-nav-link-padding-x: 0;
   --bs-nav-link-padding-y: 0.5rem;
   --bs-nav-link-font-weight: ;
-  --bs-nav-link-color: var(--bs-navbar-color);
+  --bs-nav-link-color: #706955;
   --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
   --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
   display: flex;
