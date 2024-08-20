@@ -4,25 +4,6 @@ include("./config/conexion.php");
 include("./controllers/controllerProductos.php");
 include("./controllers/controllerCarrito.php");
 
-// Crea una instancia del controlador de productos
-$controller = new ProductController($conexion);
-
-// Obtén los productos
-$products = $controller->index(); // Usa el método correcto del controlador
-
-// Obtén los elementos del carrito
-$sql = "
-    SELECT p.nombre_producto, p.precio, c.cantidad, (p.precio * c.cantidad) AS total
-    FROM carrito c
-    JOIN productos p ON c.producto_id = p.producto_id
-";
-$result = $conexion->query($sql);
-
-$cartItems = [];
-while ($row = $result->fetch_assoc()) {
-    $cartItems[] = $row;
-}
-
 $categoria_seleccionada = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
 $products = obtenerProductos($categoria_seleccionada);
 $items_en_carrito = obtenerCantidadEnCarrito();
@@ -164,11 +145,6 @@ $items_en_carrito = obtenerCantidadEnCarrito();
                             <!-- Acciones del producto -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <form action="controllerCarrito.php" method="POST">
-                                        <input type="hidden" name="producto_id" value="<?php echo htmlspecialchars($product['producto_id']); ?>" />
-                                        <button class="btn btn-outline-dark mt-auto" type="submit">Añadir al Carrito</button>
-                                    </form>
-
                                     <button type="button" class="btn btn-outline-dark mt-auto"
                                         onclick="agregarAlCarrito(<?php echo $product['producto_id']; ?>, 1)">Añadir al
                                         Carrito</button>
