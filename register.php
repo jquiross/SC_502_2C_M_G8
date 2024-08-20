@@ -1,11 +1,3 @@
-<?php
-include("./config/conexion.php");
-include("./controllers/controllerRegister.php");
-include("./models/modelRegister.php");
-
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">

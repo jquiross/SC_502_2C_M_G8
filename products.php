@@ -36,7 +36,7 @@ $products = $model->getProductsWithCategories();
 
 <body id="reportsPage" class="bg02">
     <div class="container">
-        <div class="row">
+    <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="indexDashBoard.php">
@@ -51,6 +51,9 @@ $products = $model->getProductsWithCategories();
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
+                                <a class="nav-link" href="index.php">Página Principal</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="products.php">Productos</a>
                             </li>
                             <li class="nav-item">
@@ -62,7 +65,7 @@ $products = $model->getProductsWithCategories();
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link d-flex" href="index.php">
+                                <a class="nav-link d-flex" href="login.php">
                                     <i class="far fa-user mr-2 tm-logout-icon"></i>
                                     <span>Cerrar Sesión</span>
                                 </a>
@@ -109,9 +112,9 @@ $products = $model->getProductsWithCategories();
                                                 <td class="text-center"><?php echo htmlspecialchars($row['stock']); ?></td>
                                                 <td><?php echo htmlspecialchars($row['precio']); ?></td>
                                                 <td>
-                                                    <a href="?delete=<?php echo $row['producto_id']; ?>"
-                                                        class="fas fa-trash-alt tm-trash-icon"
-                                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');"></a>
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         <?php endwhile; ?>
@@ -135,8 +138,8 @@ $products = $model->getProductsWithCategories();
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        $(function () {
-            $('.tm-product-name').on('click', function () {
+        $(function() {
+            $('.tm-product-name').on('click', function() {
                 window.location.href = "edit-product.html";
             });
         });

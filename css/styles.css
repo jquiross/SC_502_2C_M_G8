@@ -98,6 +98,22 @@
   transform: scale(1.05);
 }
 
+.checkbox-green {
+  accent-color: green; /* Cambia el color del checkbox a verde en navegadores que soportan 'accent-color' */
+}
+
+
+.checked-checkbox {
+  background-color: #d4edda; /* Verde claro de fondo */
+  border: 1px solid #c3e6cb; /* Borde verde claro */
+  border-radius: 4px;
+}
+
+.checked-checkbox input[type="checkbox"] {
+  accent-color: #28a745; /* Color verde del checkbox en navegadores compatibles */
+}
+
+
 .whatsapp-button, .other-button {
   position: fixed;
   width: 60px;

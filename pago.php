@@ -40,10 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php"
-                            style="font-size: 1.1rem; color: #2e2b27;">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="info.php"
-                            style="font-size: 1.1rem; color: #2e2b27;">Info</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html"
+                            style="font-size: 1.1rem; color: #2e2b27;">Sobre Nosotros</a></li>
                 </ul>
                 <form class="d-flex">
                     <a href="carritopag.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">
@@ -107,13 +105,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/scripts.js"></script>
     <script>
-        window.addEventListener('mouseover', initLandbot, { once: true });
-        window.addEventListener('touchstart', initLandbot, { once: true });
+        window.addEventListener('mouseover', initLandbot, {
+            once: true
+        });
+        window.addEventListener('touchstart', initLandbot, {
+            once: true
+        });
         var myLandbot;
+
         function initLandbot() {
             if (!myLandbot) {
-                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
-                s.addEventListener('load', function () {
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.addEventListener('load', function() {
                     var myLandbot = new Landbot.Livechat({
                         configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-2561965-Y9QK9150RGYNFQ92/index.json',
                     });
@@ -124,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     </script>
-    
+
 </body>
 
 </html>

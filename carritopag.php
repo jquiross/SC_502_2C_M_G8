@@ -87,17 +87,16 @@ $cartItems = obtenerProductosEnCarrito();
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php"
-                            style="font-size: 1.1rem; color: #2e2b27;">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="info.php"
-                            style="font-size: 1.1rem; color: #2e2b27;">Info</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.html"
+                            style="font-size: 1.1rem; color: #2e2b27;">Sobre Nosotros</a></li>
                 </ul>
                 <form class="d-flex">
                     <a href="carritopag.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">
                         <i class="bi-cart-fill me-1" style="color: #2e2b27;"></i>
                         Carrito
-                        <span class="badge text-white ms-1 rounded-pill" style="background-color: #2e2b27;">
-                            <?php echo obtenerCantidadEnCarrito(); ?>
+                        <span id="cantidadCarrito" class="badge text-white ms-1 rounded-pill"
+                            style="background-color: #2e2b27;">
+                            <?php echo $items_en_carrito; ?>
                         </span>
                     </a>
                     <a href="login.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">

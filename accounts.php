@@ -32,7 +32,7 @@
 
 <body class="bg03">
     <div class="container">
-        <div class="row">
+    <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="indexDashBoard.php">
@@ -47,6 +47,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
+                                <a class="nav-link" href="index.php">Página Principal</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="products.php">Productos</a>
                             </li>
                             <li class="nav-item">
@@ -58,7 +61,7 @@
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link d-flex" href="index.php">
+                                <a class="nav-link d-flex" href="login.php">
                                     <i class="far fa-user mr-2 tm-logout-icon"></i>
                                     <span>Cerrar Sesión</span>
                                 </a>
@@ -101,7 +104,7 @@
                                                 <input type="hidden" name="delete_id"
                                                     value="<?= htmlspecialchars($usuario['usuario_id']) ?>">
                                                 <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                                    <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
                                         </td>
