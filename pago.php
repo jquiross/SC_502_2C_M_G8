@@ -1,12 +1,19 @@
 <?php
-
 include("./config/conexion.php");
-include("./controllers/controllerProductos.php");
 include("./controllers/controllerCarrito.php");
 
-$categoria_seleccionada = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
-$products = obtenerProductos($categoria_seleccionada);
-$items_en_carrito = obtenerCantidadEnCarrito();
+// Obtener los productos del carrito
+$cartItems = obtenerProductosEnCarrito();
+
+// Calcular el total
+$total = array_sum(array_column($cartItems, 'total'));
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Captura el valor del total enviado desde el carrito
+    $total = isset($_POST['total']) ? $_POST['total'] : 0;
+
+    // Aquí iría el resto de la lógica de procesamiento si es necesario
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,35 +24,10 @@ $items_en_carrito = obtenerCantidadEnCarrito();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        .category-link {
-            display: inline-block;
-            margin: 0 10px;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #2e2b27;
-            border: 1px solid transparent;
-            border-radius: 20px;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
-        }
 
-        .category-link:hover {
-            background-color: #9B8B5C;
-            color: #fff;
-        }
-
-        .category-link.active {
-            background-color: #2e2b27;
-            color: #fff;
-        }
-    </style>
 </head>
 
 <body>
@@ -67,9 +49,8 @@ $items_en_carrito = obtenerCantidadEnCarrito();
                     <a href="carritopag.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">
                         <i class="bi-cart-fill me-1" style="color: #2e2b27;"></i>
                         Carrito
-                        <span id="cantidadCarrito" class="badge text-white ms-1 rounded-pill"
-                            style="background-color: #2e2b27;">
-                            <?php echo $items_en_carrito; ?>
+                        <span class="badge text-white ms-1 rounded-pill" style="background-color: #2e2b27;">
+                            <?php echo obtenerCantidadEnCarrito(); ?>
                         </span>
                     </a>
                     <a href="login.php" class="btn" style="color: #2e2b27; border-color: #2e2b27;">
@@ -89,61 +70,27 @@ $items_en_carrito = obtenerCantidadEnCarrito();
             </div>
         </div>
     </header>
-    <!-- Categories Section -->
-    <section class="py-3">
-        <div class="container px-4 px-lg-5">
-            <div class="row">
-                <div class="col text-center">
-                    <a href="index.php?categoria_id=1"
-                        class="category-link <?php echo $categoria_seleccionada == 1 ? 'active' : ''; ?>">Vinos</a>
-                    <a href="index.php?categoria_id=2"
-                        class="category-link <?php echo $categoria_seleccionada == 2 ? 'active' : ''; ?>">Bebidas
-                        Alcohólicas de Alta Gama</a>
-                    <a href="index.php?categoria_id=3"
-                        class="category-link <?php echo $categoria_seleccionada == 3 ? 'active' : ''; ?>">Cerveza
-                        Nacional</a>
-                </div>
+
+    <div class="container">
+        <h2 class="mt-5">Formulario de Pago</h2>
+        <form method="post" action="controllers/controllerCarrito.php">
+            <input type="hidden" name="action" value="procesar_pedido">
+            <input type="hidden" name="total" value="<?php echo $total; ?>">
+            <div class="mb-3">
+                <label for="cliente_id" class="form-label">ID del Cliente</label>
+                <input type="number" class="form-control" id="cliente_id" name="cliente_id" required>
             </div>
-        </div>
-    </section>
-    <!-- Sección de productos -->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <?php foreach ($products as $product): ?>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Imagen del producto -->
-                            <img class="card-img-top" src="<?php echo $product['img_ruta']; ?>" alt="..." />
-                            <!-- Detalles del producto -->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Nombre del producto -->
-                                    <h5 class="fw-bolder"><?php echo $product['nombre_producto']; ?></h5>
-                                    <!-- Precio del producto -->
-                                    <?php if ($product['descuento'] > 0): ?>
-                                        <span
-                                            class="text-muted text-decoration-line-through">$<?php echo $product['precio']; ?></span>
-                                        $<?php echo $product['precio'] - $product['descuento']; ?>
-                                    <?php else: ?>
-                                        $<?php echo $product['precio']; ?>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <!-- Acciones del producto -->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-outline-dark mt-auto"
-                                        onclick="agregarAlCarrito(<?php echo $product['producto_id']; ?>, 1)">Añadir al
-                                        Carrito</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+            <div class="mb-3">
+                <label for="fecha_pedido" class="form-label">Fecha de Pedido</label>
+                <input type="datetime-local" class="form-control" id="fecha_pedido" name="fecha_pedido" required>
             </div>
-        </div>
-    </section>
+            <div class="mb-3">
+                <label for="total" class="form-label">Total</label>
+                <input type="text" class="form-control" id="total" name="total" value="<?php echo $total; ?>" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
+        </form>
+    </div>
 
     <!-- Footer-->
     <footer class="py-5" style="background-color: #332F24;">
@@ -157,6 +104,7 @@ $items_en_carrito = obtenerCantidadEnCarrito();
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/scripts.js"></script>
     <script>
         window.addEventListener('mouseover', initLandbot, { once: true });
@@ -176,6 +124,7 @@ $items_en_carrito = obtenerCantidadEnCarrito();
             }
         }
     </script>
+    
 </body>
 
 </html>

@@ -32,7 +32,7 @@ function agregarAlCarrito(productoId, cantidad) {
     .catch(error => console.error('Error:', error));
 }
 
-$(document).ready(function() {
+    $(document).ready(function() {
     // Manejar la actualización de cantidad en el carrito
     $('.actualizar-carrito').on('submit', function(e) {
         e.preventDefault(); // Evitar la redirección

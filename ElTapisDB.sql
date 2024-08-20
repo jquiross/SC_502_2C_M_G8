@@ -113,15 +113,15 @@ INSERT INTO Roles (nombre_rol) VALUES
 ('Proveedor');
 
 INSERT INTO Usuarios (nombre_usuario, email, contraseña, rol_id) VALUES
-('juanperez', 'juan.perez@eltapis.com', 'Juan_123', 2),
-('mariarodriguez', 'maria.rodriguez@eltapis.com', 'Maria_456', 2),
-('luishernandez', 'luis.hernandez@eltapis.com', 'Luis_789', 2),
-('anagarcia', 'ana.garcia@eltapis.com', 'Ana_012', 2),
-('carlosgomez', 'carlos.gomez@eltapis.com', 'Carlos123', 1),
-('lauramartinez', 'laura.martinez@eltapis.com', 'Laura456', 1),
-('ImperialProvee', 'Imperial@gmail.com', 'Imperial_cerveza789', 3),
-('VinosProvee', 'contacto@vinogama.com', 'Vinos_012', 3),
-('WhiskeysProvee', 'contacto@whiskypremium.com', 'Whiskeys_345', 3);
+('juanperez', 'juan.perez@eltapis.com', '7d66743e1971c59a9235197c71031f05', 2),  -- Juan_123
+('mariarodriguez', 'maria.rodriguez@eltapis.com', '9a220942e90268625fd96c57e259c9a3', 2), -- Maria_456
+('luishernandez', 'luis.hernandez@eltapis.com', '25e2fbc0745229f7b2bd809f7d98e9ef', 2), -- Luis_789
+('anagarcia', 'ana.garcia@eltapis.com', 'eb3c80064c821afb0936b105b04f1a45', 2), -- Ana_012
+('carlosgomez', 'carlos.gomez@eltapis.com', 'bba020785cd36a52df715bb06cf30071', 1), -- Carlos123
+('lauramartinez', 'laura.martinez@eltapis.com', '1dee7f215a368f499de8ac3fe6182bc7', 1),-- Laura456
+('ImperialProvee', 'Imperial@gmail.com', '0b6c964828ab074c1adde2e379106254', 3),-- Imperial_cerveza789
+('VinosProvee', 'contacto@vinogama.com', '6f68080cc623ba4427d9e50f6b872df2', 3),-- Vinos_012
+('WhiskeysProvee', 'contacto@whiskypremium.com', 'ad05847ec42cfaf16cee62b0557efc1d', 3);-- Whiskeys_345
 
 INSERT INTO Clientes (usuario_id, nombre, apellido, direccion, telefono) VALUES
 (1, 'Juan', 'Pérez', 'San José', '8812-1234'),
