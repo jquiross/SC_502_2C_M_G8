@@ -37,7 +37,9 @@ if (isset($_POST["btningresar"])) {
                 header("Location: indexDashboard.php");          
             } else if ($rol == 'Cliente') {
                 header("Location: index.php");
-            }
+            } else if ($rol == '') {
+            header("Location: index.php");
+        }
             
             exit();
         } else {

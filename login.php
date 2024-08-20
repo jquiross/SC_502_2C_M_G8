@@ -50,6 +50,9 @@
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon text-center"></i>
                             <h2 class="tm-block-title mt-3">Iniciar Sesión</h2>
                             <?php
+                            if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'success') {
+                                echo '<div class="alert alert-success" role="alert">¡Registro exitoso! Ahora puedes iniciar sesión.</div>';
+                            }
                             include("./config/conexion.php");
                             include("./controllers/controllerLogin.php");
                             ?>
@@ -82,7 +85,6 @@
         <div class="btn-container">
             <a href="index.php" class="btn-yellow">Volver al Inicio</a>
         </div>
-
     </div>
 </body>
 

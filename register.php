@@ -1,3 +1,10 @@
+<?php 
+
+include('./config/conexion.php');
+include('./models/modelRegister.php');  
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Page - Dashboard Admin Template</title>
+    <title>Registro de Usuario - Dashboard Admin Template</title>
     <!--
     Template 2108 Dashboard
     http://www.tooplate.com/view/2108-dashboard
@@ -37,8 +44,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <form action="controllerRegister.php" method="post" class="tm-login-form">
-                                <!-- Campos del Usuario -->
+                            <form action="./controllers/controllerRegister.php" method="post" class="tm-login-form">
                                 <div class="input-group">
                                     <label for="nombre_usuario" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nombre de Usuario</label>
                                     <input name="nombre_usuario" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="nombre_usuario" required>
