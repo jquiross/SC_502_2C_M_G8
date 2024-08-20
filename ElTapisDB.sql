@@ -146,24 +146,24 @@ INSERT INTO Categorías (nombre_categoria, descripcion) VALUES
 ('Cerveza Nacional', 'Cervezas de Costa Rica');
 
 INSERT INTO Productos (nombre_producto, descripcion, precio, descuento, categoria_id, proveedor_id, stock, img_ruta) VALUES
-('Château Margaux 2015', 'Vino tinto de Burdeos, Francia', 1499.99, 0.00, 1, 2, 20, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.whiskyhammer.com%2Fitem%2F160168%2FOther%2FChateau-Margaux---2015-3-x-75cl.html&psig=AOvVaw1RhIFSOdiJ7DRidReDXY-5&ust=1721856545450000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCHuNCNvocDFQAAAAAdAAAAABAJ'),
-('Dom Pérignon Vintage 2012', 'Champán de prestigio de la región de Champagne, Francia', 2099.99, 0.00, 1, 2, 15, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thecorkscrew.ie%2Fdom-perignon-vintage-1.html&psig=AOvVaw35V-VVeWcJ618LMAyZ2gJM&ust=1721856610250000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPCn_-6NvocDFQAAAAAdAAAAABAJ'),
-('Screaming Eagle Cabernet Sauvignon 2018', 'Vino tinto de Napa Valley, California', 3299.99, 0.00, 1, 2, 10, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mundovini.nl%2Fen%2Fproducts%2Fscreaming-eagle-2018&psig=AOvVaw0CdooWxvl-yOJ-iARucpGy&ust=1721856651961000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNDwyoKOvocDFQAAAAAdAAAAABAE'),
-('Penfolds Grange 2016', 'Vino tinto icónico de Australia', 899.99, 0.00, 1, 2, 25, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fhic-winemerchants.com%2Fproducts%2Fpenfolds-grange-bin-95-2016&psig=AOvVaw3nV_ez69IpYnadG25Paqoj&ust=1721856694815000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDr-JaOvocDFQAAAAAdAAAAABAX'),
-('Château d\'Yquem 2001', 'Vino de postre de Sauternes, Francia', 499.99, 0.00, 1, 2, 20, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.straussart.co.za%2Fauctions%2Flot%2F28-aug-2023-wine%2F100&psig=AOvVaw02OPto2zCGwV70lMiFe4s4&ust=1721856751241000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCN9bGOvocDFQAAAAAdAAAAABAK');
+('Château Margaux 2015', 'Vino tinto de Burdeos, Francia', 1499.99, 0.00, 1, 2, 20, 'https://i.imgur.com/9sdniR8.png'),
+('Dom Pérignon Vintage 2012', 'Champán de prestigio de la región de Champagne, Francia', 2099.99, 0.00, 1, 2, 15, 'https://i.imgur.com/laSGa4i.png'),
+('Screaming Eagle Cabernet Sauvignon 2018', 'Vino tinto de Napa Valley, California', 3299.99, 0.00, 1, 2, 10, 'https://i.imgur.com/fcUTeUP.png'),
+('Penfolds Grange 2016', 'Vino tinto icónico de Australia', 899.99, 0.00, 1, 2, 25, 'https://i.imgur.com/clJHHYt.png'),
+('Château d\'Yquem 2001', 'Vino de postre de Sauternes, Francia', 499.99, 0.00, 1, 2, 20, 'https://i.imgur.com/URT2NVf.png');
 
 INSERT INTO Productos (nombre_producto, descripcion, precio, descuento, categoria_id, proveedor_id, stock, img_ruta) VALUES
-('Macallan Sherry Oak 18 Years Old', 'Whisky escocés de malta de alta gama', 299.99, 0.00, 2, 3, 30, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amathusdrinks.com%2Fb2c%2Fthe-macallan-18yr-sherry-oak-2022-release&psig=AOvVaw17SN4Im7ZFfLzlWTrTs3GR&ust=1721856834885000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDi49mOvocDFQAAAAAdAAAAABAR'),
-('Louis XIII de Rémy Martin', 'Cognac de lujo con una mezcla de hasta 100 años', 3499.99, 0.00, 2, 3, 5, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Flacavegillet.com%2Fproducto%2Fremy-martin-louis-xiii-cognac%2F&psig=AOvVaw0R7luDNtiPioEv3eoeMFiF&ust=1721856871036000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIicreuOvocDFQAAAAAdAAAAABAE'),
-('Hennessy Paradis', 'Cognac de alta gama', 999.99, 0.00, 2, 3, 10, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.luxuryformen.com%2Fen%2Fhennessy-paradis-cognac&psig=AOvVaw3F72kqNC93upiWmALdKdGM&ust=1721856902800000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJi5uvqOvocDFQAAAAAdAAAAABAE'),
-('Pappy Van Winkle\'s Family Reserve 23 Year', 'Bourbon estadounidense raro y costoso', 2999.99, 0.00, 2, 3, 8, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwhiskyandwhiskey.com%2Fproducts%2Fpappy-van-winkles-23-year-old-family-reserve-bourbon&psig=AOvVaw2aOH24HjYxyc998PHi_I3Z&ust=1721856942302000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMiupo6PvocDFQAAAAAdAAAAABAE'),
-('Johnnie Walker Blue Label', 'Whisky escocés de lujo', 239.99, 0.00, 2, 3, 50, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fvinumcr.com%2Fproduct%2Fjohnnie-walker-blue-label-whisky%2F&psig=AOvVaw0bF-aSW8rOt5ZwP4ltD9da&ust=1721856978446000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiylJ6PvocDFQAAAAAdAAAAABAE');
+('Macallan Sherry Oak 18 Years Old', 'Whisky escocés de malta de alta gama', 299.99, 0.00, 2, 3, 30, 'https://i.imgur.com/o2zWbGl.png'),
+('Louis XIII de Rémy Martin', 'Cognac de lujo con una mezcla de hasta 100 años', 3499.99, 0.00, 2, 3, 5, 'https://i.imgur.com/oz471DU.png'),
+('Hennessy Paradis', 'Cognac de alta gama', 999.99, 0.00, 2, 3, 10, 'https://i.imgur.com/AHKJmgO.png'),
+('Pappy Van Winkle\'s Family Reserve 23 Year', 'Bourbon estadounidense raro y costoso', 2999.99, 0.00, 2, 3, 8, 'https://i.imgur.com/aTLzUjN.png'),
+('Johnnie Walker Blue Label', 'Whisky escocés de lujo', 239.99, 0.00, 2, 3, 50, 'https://i.imgur.com/fs6mOvX.png');
 
 INSERT INTO Productos (nombre_producto, descripcion, precio, descuento, categoria_id, proveedor_id, stock, img_ruta) VALUES
-('Imperial', 'Cerveza rubia tipo lager, muy popular en Costa Rica', 1.50, 0.00, 3, 1, 200, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lafatfluencer.com%2F2022%2F04%2F29%2Fcerveza-imperial-presenta-cambio-de-imagen-con-la-mirada-hacia-el-futuro%2F&psig=AOvVaw1vtmYEcHvIE2wy6YyqtVZ8&ust=1721857021767000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJiSlrSPvocDFQAAAAAdAAAAABAE'),
-('Pilsen', 'Cerveza rubia tipo pilsner, conocida en Costa Rica', 1.60, 0.00, 3, 1, 180, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.walmart.co.cr%2F15-pack-cerveza-pilsen-lata-350ml%2Fp&psig=AOvVaw2Tc58B4J-v085soMNZzCXp&ust=1721857069883000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLDgw9OPvocDFQAAAAAdAAAAABAE'),
-('Bavaria Dark', 'Cerveza oscura con un sabor robusto, de Costa Rica', 1.70, 0.00, 3, 1, 150, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fkasaicr.com%2Fproduct%2Fbavaria-dark%2F&psig=AOvVaw0NCT_ZvoK6c1e-Ur3MMW8U&ust=1721857125608000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODGveSPvocDFQAAAAAdAAAAABAE'),
-('Craft Beer Costa Rica', 'Cerveza artesanal premium de Costa Rica', 2.50, 0.00, 3, 1, 100, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FLaCraftCR%2Fposts%2Fhasta-la-puerta-de-tu-casa-no-olvid%25C3%25A9s-que-tambi%25C3%25A9n-las-pod%25C3%25A9s-pedir-al-6261-2485-d%2F5253388844705640%2F&psig=AOvVaw2ONJbSluN8scJq8Bhk7AS0&ust=1721857159706000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODNyfuPvocDFQAAAAAdAAAAABAQ');
+('Imperial', 'Cerveza rubia tipo lager, muy popular en Costa Rica', 1.50, 0.00, 3, 1, 200, 'https://i.imgur.com/GYe7lqH.png'),
+('Pilsen', 'Cerveza rubia tipo pilsner, conocida en Costa Rica', 1.60, 0.00, 3, 1, 180, 'https://i.imgur.com/RbDesjv.png'),
+('Bavaria Dark', 'Cerveza oscura con un sabor robusto, de Costa Rica', 1.70, 0.00, 3, 1, 150, 'https://i.imgur.com/fQCjcnc.png'),
+('Craft Beer Costa Rica', 'Cerveza artesanal premium de Costa Rica', 2.50, 0.00, 3, 1, 100, 'https://i.imgur.com/hwyQZ9f.png');
 
 
 INSERT INTO Inventario (producto_id, cantidad, fecha_actualizacion) VALUES
