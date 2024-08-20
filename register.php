@@ -1,3 +1,15 @@
+<<<<<<< Updated upstream
+=======
+<?php
+include_once("./config/conexion.php");
+include_once("./controllers/controllerRegister.php");
+include_once("./models/modelRegister.php");
+
+
+
+?>
+
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 
