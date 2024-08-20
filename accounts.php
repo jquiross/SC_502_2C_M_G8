@@ -6,33 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- https://fontawesome.com/ -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/tooplate.css">
 
     <?php
     include_once("./config/conexion.php");
-    include_once("./models/UserModel.php");
     include_once("./controllers/controllerUser.php");
 
     $usuarios = obtenerUsuarios($conexion);
 
     // Manejar la eliminación si se recibe un ID de usuario en la solicitud POST
     if (isset($_POST['delete_id'])) {
-        $userModel = new UserModel($conexion);
-        $userModel->eliminarUsuario($_POST['delete_id']);
-        header("Location: accounts.php"); // Redirigir para evitar el reenvío del formulario
-        exit();
+        eliminarUsuarioController($conexion, $_POST['delete_id']);
     }
     ?>
 </head>
 
 <body class="bg03">
     <div class="container">
-    <div class="row">
+        <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="indexDashBoard.php">
@@ -118,9 +111,7 @@
         </div>
     </div>
     <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
 </body>
 
 </html>

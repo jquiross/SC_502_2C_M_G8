@@ -59,6 +59,11 @@ class UserModel {
 
     public function eliminarUsuario($id) {
         try {
+            $query = "DELETE FROM Clientes WHERE usuario_id = ?";
+            $stmt = $this->conexion->prepare($query);
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            
             $query = "DELETE FROM Usuarios WHERE usuario_id = ?";
             $stmt = $this->conexion->prepare($query);
             $stmt->bind_param("i", $id);

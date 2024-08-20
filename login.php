@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,19 +27,19 @@
             font-size: 16px;
             text-decoration: none;
         }
-
+ 
         .btn-yellow:hover {
             background-color: #e6b800;
             color: #fff;
         }
-
+ 
         .btn-container {
             text-align: center;
             margin-top: 20px;
         }
     </style>
 </head>
-
+ 
 <body class="bg03">
     <div class="container">
         <div class="row tm-mt-big">
@@ -50,6 +50,9 @@
                             <i class="fas fa-3x fa-tachometer-alt tm-site-icon text-center"></i>
                             <h2 class="tm-block-title mt-3">Iniciar Sesión</h2>
                             <?php
+                            if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'success') {
+                                echo '<div class="alert alert-success" role="alert">¡Registro exitoso! Ahora puedes iniciar sesión.</div>';
+                            }
                             include("./config/conexion.php");
                             include("./controllers/controllerLogin.php");
                             ?>
@@ -82,8 +85,7 @@
         <div class="btn-container">
             <a href="index.php" class="btn-yellow">Volver al Inicio</a>
         </div>
-
     </div>
 </body>
-
+ 
 </html>

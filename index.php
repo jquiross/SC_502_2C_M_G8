@@ -58,7 +58,7 @@ $items_en_carrito = obtenerCantidadEnCarrito();
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" href="aboutus.html"
+                    <li class="nav-item"><a class="nav-link active" href="aboutus.php"
                             style="font-size: 1.1rem; color: #2e2b27;">Sobre Nosotros</a></li>
                 </ul>
                 <form class="d-flex">
