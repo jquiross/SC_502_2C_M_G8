@@ -1,19 +1,18 @@
 <?php
-include_once './models/ProductoModel.php';
-include_once './controllers/controllerProductos.php';
-include("./config/conexion.php");
+
+require_once(__DIR__ . "/../models/ProductoModel.php");
+include(__DIR__ . "/../config/conexion.php");
 
 function obtenerProductos($categoria_id = null) {
     global $conexion;
 
-
     if ($categoria_id) {
-        $stmt = $conexion->prepare("SELECT producto_id,nombre_producto, descripcion, precio, descuento, stock, img_ruta FROM Productos WHERE categoria_id = ?");
+        $stmt = $conexion->prepare("SELECT producto_id, nombre_producto, descripcion, precio, descuento, stock, img_ruta FROM Productos WHERE categoria_id = ?");
         $stmt->bind_param("i", $categoria_id);
     } else {
-        $stmt = $conexion->prepare("SELECT producto_id,nombre_producto, descripcion, precio, descuento, stock, img_ruta FROM Productos");
+        $stmt = $conexion->prepare("SELECT producto_id, nombre_producto, descripcion, precio, descuento, stock, img_ruta FROM Productos");
     }
-    
+
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -33,36 +32,49 @@ class ProductController {
         $this->model = new ProductModel($conexion);
     }
 
-    public function index() {
-        return $this->model->getProductsWithCategories(); // Obtener productos y categorías
-    }
-// Mostrar un producto específico
-    public function view($id) {
-        $product = $this->model->getProductById($id);
-        include 'views/product_view.php'; // Incluye la vista para mostrar un producto
-    }
-
-    // Añadir un nuevo producto
     public function add($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta) {
-        $this->model->addProduct($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta);
-        header("Location: products.php"); // Redirige a la lista de productos
+        if ($this->model->addProduct($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta)) {
+            header("Location: ../products.php"); // Redirige a la lista de productos
+            exit(); 
+        } else {
+            echo "Error al agregar el producto.";
+        }
     }
 
-    // Actualizar un producto existente
-    public function update($id, $nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta) {
-        $this->model->updateProduct($id, $nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta);
-        header("Location: view.php?id=$id"); // Redirige a la vista del producto
-    }
-
-    // Eliminar un producto
     public function deleteProduct($productId) {
         if ($this->model->deleteProduct($productId)) {
-            header('Location: products.php'); // Redirige de nuevo a la lista de productos
+            header('Location: ../products.php'); // Redirige de nuevo a la lista de productos
+            exit();
         } else {
             echo "Error al eliminar el producto.";
         }
     }
 }
+
+// Manejo de la acción recibida
+if (isset($_GET['action'])) {
+    $controller = new ProductController($conexion);
+
+    if ($_GET['action'] == 'add') {
+        // Código para agregar producto
+        $nombre = $_POST['name'];
+        $descripcion = $_POST['description'];
+        $precio = $_POST['price'];
+        $descuento = $_POST['discount'];
+        $stock = $_POST['stock'];
+        $categoria_id = $_POST['category'];
+        $proveedor_id = $_POST['provider'];
+        $img_ruta = $_POST['img_ruta'];
+
+        $controller->add($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta);
+    } if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+        $controller = new ProductController($conexion);
+        if (isset($_GET['id'])) {
+            $productId = intval($_GET['id']);
+            $controller->deleteProduct($productId);
+        } else {
+            echo "ID de producto no proporcionado.";
+        }
+    }
+}
 ?>
-
-

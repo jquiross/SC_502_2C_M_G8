@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 var s = document.createElement('script');
                 s.type = 'text/javascript';
                 s.async = true;
-                s.addEventListener('load', function() {
+                s.addEventListener('load', function () {
                     var myLandbot = new Landbot.Livechat({
                         configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-2561965-Y9QK9150RGYNFQ92/index.json',
                     });

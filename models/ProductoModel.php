@@ -45,10 +45,10 @@ class ProductModel {
     }
 
     public function deleteProduct($productId) {
-        $query = "DELETE FROM Productos WHERE producto_id = ?";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param('i', $productId);
+        $stmt = $this->conexion->prepare("DELETE FROM Productos WHERE producto_id = ?");
+        $stmt->bind_param("i", $productId);
         return $stmt->execute();
     }
 }
+    
 ?>

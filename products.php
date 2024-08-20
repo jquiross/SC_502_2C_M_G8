@@ -36,7 +36,7 @@ $products = $model->getProductsWithCategories();
 
 <body id="reportsPage" class="bg02">
     <div class="container">
-    <div class="row">
+        <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="indexDashBoard.php">
@@ -112,9 +112,11 @@ $products = $model->getProductsWithCategories();
                                                 <td class="text-center"><?php echo htmlspecialchars($row['stock']); ?></td>
                                                 <td><?php echo htmlspecialchars($row['precio']); ?></td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-danger btn-sm">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
+                                                    <a href="controllers/controllerProductos.php?action=delete&id=<?php echo $row['producto_id']; ?>"
+                                                        class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                                    </a>
                                                 </td>
                                             </tr>
                                         <?php endwhile; ?>
@@ -138,8 +140,8 @@ $products = $model->getProductsWithCategories();
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        $(function() {
-            $('.tm-product-name').on('click', function() {
+        $(function () {
+            $('.tm-product-name').on('click', function () {
                 window.location.href = "edit-product.html";
             });
         });

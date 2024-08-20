@@ -5,18 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--
-    Template 2108 Dashboard
-    http://www.tooplate.com/view/2108-dashboard
-    -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
-    <!-- https://fontawesome.com/ -->
     <link rel="stylesheet" href="jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
-    <!-- http://api.jqueryui.com/datepicker/ -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/tooplate.css">
 </head>
 
@@ -57,7 +49,7 @@
             </nav>
         </div>
     </div>
-    <!-- row -->
+
     <div class="row tm-mt-big justify-content-center">
         <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
             <div class="bg-white tm-block p-3 rounded shadow-sm">
@@ -68,7 +60,8 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-12">
-                        <form action="controllerProduct.php" method="POST" class="tm-edit-product-form">
+                        <form action="controllers/controllerProductos.php?action=add" method="POST" class="tm-edit-product-form">
+                            <!-- Campos del formulario -->
                             <div class="form-group mb-2">
                                 <label for="name" class="form-label">Nombre del Producto</label>
                                 <input id="name" name="name" type="text" class="form-control validate"
@@ -111,7 +104,6 @@
                                 <select class="form-select" id="provider" name="provider" required>
                                     <option value="" disabled selected>Seleccione un proveedor</option>
                                     <?php
-                                    include 'config/conexion.php';
                                     $query = "SELECT * FROM Proveedores";
                                     $result = $conexion->query($query);
                                     if (!$result) {
@@ -143,22 +135,9 @@
         </div>
     </div>
 
-
-    </div>
-
-    </div>
-
     <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
     <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
-    <!-- https://jqueryui.com/download/ -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
-    <script>
-        $(function () {
-            $('#expire_date').datepicker();
-        });
-    </script>
 </body>
 
 </html>
