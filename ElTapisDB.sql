@@ -83,8 +83,11 @@ CREATE TABLE Pedidos (
     cliente_id INT,
     fecha_pedido DATETIME NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES Clientes(cliente_id)
+    FOREIGN KEY (cliente_id) REFERENCES Clientes(cliente_id) ON DELETE CASCADE
 );
+
+
+
 
 -- Tabla: DetallesPedidos
 CREATE TABLE DetallesPedidos (
@@ -93,9 +96,10 @@ CREATE TABLE DetallesPedidos (
     producto_id INT,
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (pedido_id) REFERENCES Pedidos(pedido_id),
+    FOREIGN KEY (pedido_id) REFERENCES Pedidos(pedido_id) ON DELETE CASCADE,
     FOREIGN KEY (producto_id) REFERENCES Productos(producto_id)
 );
+
 
 -- Tabla: Inventario
 CREATE TABLE Inventario (
