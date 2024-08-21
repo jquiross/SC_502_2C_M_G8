@@ -2,6 +2,7 @@
 include('../config/conexion.php');
 include('../models/modelRegister.php');
  
+//Trae las cosas al detectar el post y crea el usuario
 if (isset($_POST['btnregistrar'])) {
     $nombre_usuario = $_POST['nombre_usuario'];
     $email = $_POST['email'];

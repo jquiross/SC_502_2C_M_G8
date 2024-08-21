@@ -3,6 +3,7 @@
 include_once ('./config/conexion.php');
 include_once("./models/UserModel.php");
 
+//Funciones para eliminar y obtener usuarios
 function eliminarUsuarioController($conexion, $id) {
     $userModel = new UserModel($conexion);
     if ($userModel->eliminarUsuario($id)) {

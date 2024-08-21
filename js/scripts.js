@@ -6,7 +6,7 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-// Function to update the cart content
+// Funcion para actualizar carrito
 function actualizarCarrito() {
     fetch('controllers/controllerCarrito.php?action=ver')
     .then(response => response.text())
@@ -16,7 +16,7 @@ function actualizarCarrito() {
     .catch(error => console.error('Error:', error));
 }
 
-// Function to add a product to the cart
+// Funcion para agregar al carrito
 function agregarAlCarrito(productoId, cantidad) {
     let formData = new FormData();
     formData.append('producto_id', productoId);
@@ -34,6 +34,7 @@ function agregarAlCarrito(productoId, cantidad) {
     .catch(error => console.error('Error:', error));
 }
 
+//Funcion para actualizar el total de productos del carrito
 $(document).ready(function() {
     // Handle cart quantity update
     $('.actualizar-carrito').on('submit', function(e) {
@@ -54,7 +55,8 @@ $(document).ready(function() {
         });
     });
 
-    // Handle removal of a product from the cart
+
+    // Funcion para cuando se borran productos del carrito
     $('.eliminar-carrito').on('submit', function(e) {
         e.preventDefault(); // Prevent redirection
 
@@ -73,7 +75,7 @@ $(document).ready(function() {
         });
     });
 
-    // Handle checkbox color change
+    // Funcion para manejar el cambio de checkbox
     $('input[type="checkbox"]').change(function() {
         if (this.checked) {
             $(this).parent().addClass('checked-checkbox');
@@ -83,7 +85,7 @@ $(document).ready(function() {
     });
     
 
-    // Handle the delete icon functionality
+    // Funcion para manejar boton de eliminar
     $('.tm-trash-icon').on('click', function() {
         var $row = $(this).closest('tr');
         var pedidoId = $row.data('pedido-id'); // Get the pedido ID from the row data

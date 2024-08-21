@@ -4,6 +4,7 @@ include("./config/conexion.php");
 include("./controllers/controllerProductos.php");
 include("./controllers/controllerCarrito.php");
 
+//Obtener productos por categoria, obtener los productos y obtener cantidad de items en el carrito
 $categoria_seleccionada = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
 $products = obtenerProductos($categoria_seleccionada);
 $items_en_carrito = obtenerCantidadEnCarrito();

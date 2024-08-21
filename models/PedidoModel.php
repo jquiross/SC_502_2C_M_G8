@@ -9,6 +9,7 @@ class PedidoModel {
         $this->conexion = $conexion;
     }
 
+    //Funcion para obtener los pedidos 
     public function obtenerPedidos() {
         $query = "
             SELECT p.pedido_id, 
@@ -33,6 +34,7 @@ class PedidoModel {
         }
     }
 
+    //Funcion para borrar el pedido
     public function borrarPedido($pedido_id) {
         try {
             $this->conexion->begin_transaction();

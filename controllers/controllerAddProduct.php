@@ -3,6 +3,8 @@
 include 'config/conexion.php';
 include 'models/ProductModel.php';
 
+//Funcion para agarrar los datos del producto y agregarlos
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['name'];
     $descripcion = $_POST['description'];

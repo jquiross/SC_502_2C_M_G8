@@ -14,7 +14,7 @@
     include_once("./config/conexion.php");
     include_once("./models/UserModel.php");
 
-    // Manejar la adición si se recibe un formulario POST
+    // Manejar la funcion si se recibe un formulario POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nombre = $_POST['nombre'];
         $email = $_POST['email'];

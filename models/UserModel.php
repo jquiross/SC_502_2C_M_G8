@@ -7,6 +7,7 @@ class UserModel {
         $this->conexion = $conexion;
     }
 
+    //model para obtener usuarios
     public function obtenerUsuarios() {
         try {
             $query = "SELECT * FROM Usuarios";
@@ -19,6 +20,7 @@ class UserModel {
         }
     }
 
+    //model para obtener usuarios por id
     public function obtenerUsuarioPorId($id) {
         try {
             $query = "SELECT * FROM Usuarios WHERE usuario_id = ?";
@@ -32,6 +34,7 @@ class UserModel {
         }
     }
 
+    //models para crud de los usuarios
     public function agregarUsuario($nombre, $email, $contraseña, $rol_id) {
         try {
             $query = "INSERT INTO Usuarios (nombre_usuario, email, contraseña, rol_id) VALUES (?, ?, ?, ?)";

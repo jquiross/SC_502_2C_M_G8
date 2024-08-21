@@ -9,7 +9,7 @@ class ProductoControllerDash {
     public function __construct($productoModel) {
         $this->productoModel = $productoModel;
     }
-
+//Funciones para ver los productos
     public function mostrarProductos() {
         $productos = $this->productoModel->obtenerProductos();
         include '../views/products.php'; // Asegúrate de que esta ruta sea correcta

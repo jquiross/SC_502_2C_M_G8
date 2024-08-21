@@ -189,7 +189,7 @@ function procesarPedido($nombre_usuario, $fecha_pedido, $total)
 }
 
 
-
+//Funcion para eliminar del stock lo que se compro
 function actualizarStockProducto($producto_id, $cantidad)
 {
     global $conexion;

@@ -9,11 +9,13 @@ class PedidoController {
         $this->pedidoModel = new PedidoModel($conexion);
     }
 
+    //Funcion para ver los pedidos
     public function mostrarPedidos() {
         $pedidos = $this->pedidoModel->obtenerPedidos();
         return $pedidos;
     }
 
+    //Funcion eliminar los pedidos
     public function eliminarPedido($pedidoId) {
         $resultado = $this->pedidoModel->borrarPedido($pedidoId);
         return $resultado;  // Ya devuelve true o false directamente

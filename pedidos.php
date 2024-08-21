@@ -185,7 +185,7 @@ if (isset($_POST['eliminar_pedido'])) {
                             <h2 class="tm-block-title d-inline-block">Pedidos</h2>
                         </div>
                         <div class="col-md-4 col-sm-12 text-right">
-                            <!-- Puedes añadir botones o acciones aquí si lo necesitas -->
+                          
                         </div>
                     </div>
                     <div class="table-responsive">

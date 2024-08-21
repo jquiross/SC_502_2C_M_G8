@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/../models/ProductoModel.php");
 include(__DIR__ . "/../config/conexion.php");
 
+//Funcion para traer los productos
 function obtenerProductos($categoria_id = null) {
     global $conexion;
 
@@ -32,6 +33,7 @@ class ProductController {
         $this->model = new ProductModel($conexion);
     }
 
+    //Funcion para agregar un producto
     public function add($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta) {
         if ($this->model->addProduct($nombre, $descripcion, $precio, $descuento, $stock, $categoria_id, $proveedor_id, $img_ruta)) {
             header("Location: ../products.php"); // Redirige a la lista de productos
@@ -40,7 +42,7 @@ class ProductController {
             echo "Error al agregar el producto.";
         }
     }
-
+//Funcion para eliminar un producto
     public function deleteProduct($productId) {
         if ($this->model->deleteProduct($productId)) {
             header('Location: ../products.php'); // Redirige de nuevo a la lista de productos
